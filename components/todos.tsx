@@ -1,33 +1,35 @@
-import React from 'react'
-import { todoMap } from '../utils/todo'
+import React, { useEffect, useState } from 'react'
+import { useHooks } from '../utils/hooks'
+import { Todo } from '../utils/todo'
+import NewTodo from './todo-crud/create-todo'
+import { deleteTodo } from './todo-crud/delete-todo'
+import { getTodoList } from './todo-crud/get-todoList'
 
 /*
-- todoを削除
-- todoを作成
-- todoのタイトル、descriptionを変更
-- todoの変更日時を記録
-- todoの達成済みリストを作成
-- docker化
+TODO: todoのタイトル、descriptionを変更
+TODO: ボタンのUIを変更
 */
 
-const createTodo = () => {
-    /*
-    1. todo作成画面
-    */
-}
+const TodoList = () => {
+    const [showNewTodo, setShowNewTodo] = useState(false)
+    const { state, setState, onChange } = useHooks<Todo[]>([])
 
-const deleteTodo = (id: string) => {
-    /*
-    1. todoを削除
-    */
-}
+    useEffect(() => {
+        getTodoList().then((v) => {
+            setState(v)
+        })
+    }, [])
 
-const Todos = () => {
     return (
         <div>
-            <button onClick={createTodo}>New+</button>
+            <button
+                style={{
+                    // showNewTodo
+                }}
+                onClick={() => setShowNewTodo(!showNewTodo)}>New+</button>
             <hr />
-            {todoMap.map((t) => (
+            {showNewTodo && <NewTodo />}
+            {state.map((t) => (
                 <div key={t.id} style={{
                     borderBottom: "1px solid gray",
                     margin: "10px 0",
@@ -37,14 +39,30 @@ const Todos = () => {
                             display: "flex",
                         }}
                     >
-                        {t.title}
+                        <span
+                            className={"edit"}
+                        >
+                            {t.title}
+                        </span>
+                        {t.updatedAt && (
+                            <div
+                                style={{
+                                    margin: "auto 10px",
+                                    fontWeight: "normal",
+                                    color: "red",
+                                }}
+                            >
+                                update {t.updatedAt}
+                            </div>
+                        )
+                        }
                         <div
                             style={{
                                 margin: "auto 10px",
                                 fontWeight: "normal",
                             }}
                         >
-                            {t.timeStamp}
+                            create {t.timeStamp}
                         </div>
                         <div
                             style={{
@@ -58,6 +76,7 @@ const Todos = () => {
                         style={{
                             color: "gray",
                         }}
+                        className={"edit"}
                     >
                         {t.description}
                     </p>
@@ -67,4 +86,4 @@ const Todos = () => {
     )
 }
 
-export default Todos
+export default TodoList
