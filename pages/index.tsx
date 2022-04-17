@@ -1,5 +1,5 @@
 import React from 'react'
-import Todos from '../components/todos'
+import TodoList from '../components/todos'
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
       }}
       >
         <h1>Todo App</h1>
-        <Todos />
+        <TodoList />
       </div>
     </div>
   )
