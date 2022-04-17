@@ -1,0 +1,8 @@
+version: "3"
+services:
+  todo-web:
+    build: .
+    container_name: todo-web
+    command: sh -c "yarn start"
+    ports:
+      - "3000:3000"
