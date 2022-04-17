@@ -2,7 +2,7 @@ export interface Todo {
   id: string;
   title: string;
   description?: string;
-  timeStamp: string;
+  timeStamp?: string;
   updatedAt?: string
 }
 
