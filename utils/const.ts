@@ -1,5 +1,6 @@
 const HOST = "localhost";
-const URL_BASE = `http://${HOST}:3000`;
+const PORT = 3000
+const URL_BASE = `http://${HOST}:${PORT}`;
 
 const TODO_URLS = {
     get: URL_BASE + "/todo-list",
