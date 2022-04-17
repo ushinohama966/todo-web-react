@@ -19,7 +19,7 @@ const TodoList = () => {
         getTodoList().then((v) => {
             setState(v)
         })
-    }, [])
+    })
 
     return (
         <div>
