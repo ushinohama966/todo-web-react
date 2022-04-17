@@ -44,7 +44,7 @@ const TodoList = () => {
                                 setState(newState)
                             }} />
                         ) : (
-                            <span className={"edit"}>
+                            <span>
                                 {t.title}
                             </span>
                         )}
