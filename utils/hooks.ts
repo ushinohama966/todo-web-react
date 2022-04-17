@@ -3,7 +3,7 @@ import React, { useState } from "react"
 const useHooks = function <T>(initState: T) {
     const [state, setState] = useState(initState)
 
-    const onChange = (e: React.ChangeEvent<
+    const onMapChange = (e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement
     >) => {
         setState({ ...state, [e.currentTarget.name]: e.currentTarget.value })
@@ -12,7 +12,7 @@ const useHooks = function <T>(initState: T) {
     return {
         state,
         setState,
-        onChange,
+        onMapChange,
     }
 
 }

@@ -17,7 +17,7 @@ export const newTodoRequest = (data: NewTodo) => {
 }
 
 const NewTodo = () => {
-    const { state, onChange } = useHooks<NewTodo>({
+    const { state, onMapChange } = useHooks<NewTodo>({
         title: "",
         description: ""
     })
@@ -32,7 +32,7 @@ const NewTodo = () => {
             <h3>
                 <input
                     placeholder="title"
-                    onChange={onChange}
+                    onChange={onMapChange}
                     value={state.title}
                     name={"title"} />
                 <button
@@ -45,7 +45,7 @@ const NewTodo = () => {
                 }}
             >
                 <input
-                    onChange={onChange}
+                    onChange={onMapChange}
                     value={state.description}
                     name={"description"}
                     placeholder="description" />
